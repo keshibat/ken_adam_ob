@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :location_id %>
-    <%= form.text_field :location_id %>
+      <%= form.label :location_id  %>
+      <%= form.select :location_id, city.map{|v| [v.city,v.id]}  %>
   </div>
 
   <div class="field">
@@ -42,16 +42,20 @@
   </div>
 
   <div class="field">
-    <%= form.label :cuisine_id %>
-    <%= form.text_field :cuisine_id %>
+      <%= form.label :cuisine_id  %>
+      <%= form.select :cuisine_id, cuisines.map{|c| [c.name,c.id]}  %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div>
+      <%= form.label :picture  %>
+      <%= form.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg"   %>
   </div>
 
+  <%= form.hidden_field :user_id, :value => params[:id] %>
+  
   <div class="actions">
-    <%= form.submit %>
+      <%= form.submit %>
   </div>
+
 <% end %>
+

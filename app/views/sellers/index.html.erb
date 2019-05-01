@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Company Image</th>
       <th>Company name</th>
       <th>Description</th>
       <th>Location</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @sellers.each do |seller| %>
       <tr>
+        <td><%= image_tag seller.picture if seller.picture.attached? %></td>
         <td><%= seller.company_name %></td>
         <td><%= seller.description %></td>
         <td><%= seller.location %></td>

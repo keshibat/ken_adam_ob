@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+country = "Australia"
+state = "NSW"
+cities = ["Sydney CBD"]
+
+cities.each do |c|
+    Location.create(country: country, state: state, city: c)
+end
+
+arr = ["French","Italian","Japanese","Chinese","Mexican","Indian","Thai","Indonesian","Greek","Spanish","Turkish"]
+arr.each do |name|
+    Cuisine.create(name: name)
+end
+
+

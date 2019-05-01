@@ -15,15 +15,20 @@ class SellersController < ApplicationController
   # GET /sellers/new
   def new
     @seller = Seller.new
+    @cuisine = Cuisine.all
+    @city = Location.all
   end
 
   # GET /sellers/1/edit
   def edit
+    @cuisine = Cuisine.all
+    @city = Location.all
   end
 
   # POST /sellers
   # POST /sellers.json
   def create
+    
     @seller = Seller.new(seller_params)
 
     respond_to do |format|
@@ -31,6 +36,8 @@ class SellersController < ApplicationController
         format.html { redirect_to @seller, notice: 'Seller was successfully created.' }
         format.json { render :show, status: :created, location: @seller }
       else
+        @cuisine = Cuisine.all
+        @city = Location.all
         format.html { render :new }
         format.json { render json: @seller.errors, status: :unprocessable_entity }
       end
@@ -45,6 +52,8 @@ class SellersController < ApplicationController
         format.html { redirect_to @seller, notice: 'Seller was successfully updated.' }
         format.json { render :show, status: :ok, location: @seller }
       else
+        @cuisine = Cuisine.all
+        @city = Location.all
         format.html { render :edit }
         format.json { render json: @seller.errors, status: :unprocessable_entity }
       end
@@ -69,6 +78,6 @@ class SellersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seller_params
-      params.require(:seller).permit(:company_name, :description, :location_id, :address, :website_url, :google_reviews_url, :cuisine_id, :user_id)
+      params.require(:seller).permit(:company_name, :description, :location_id, :address, :website_url, :google_reviews_url, :cuisine_id, :user_id,:picture)
     end
 end
