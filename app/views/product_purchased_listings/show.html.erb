@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product name:</strong>
+  <%= @product_purchased_listing.product_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product_purchased_listing.description %>
+</p>
+
+<p>
+  <strong>Was price:</strong>
+  <%= @product_purchased_listing.was_price %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product_purchased_listing.price %>
+</p>
+
+<p>
+  <strong>Reference number:</strong>
+  <%= @product_purchased_listing.reference_number %>
+</p>
+
+<p>
+  <strong>Expiry date:</strong>
+  <%= @product_purchased_listing.expiry_date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @product_purchased_listing.user %>
+</p>
+
+<%= link_to 'Edit', edit_product_purchased_listing_path(@product_purchased_listing) %> |
+<%= link_to 'Back', product_purchased_listings_path %>

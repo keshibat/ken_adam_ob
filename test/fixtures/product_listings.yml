@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_name: MyString
+  description: MyText
+  was_price: 1
+  price: 1
+  expiry_date: 2019-05-01
+  seller: one
+
+two:
+  product_name: MyString
+  description: MyText
+  was_price: 1
+  price: 1
+  expiry_date: 2019-05-01
+  seller: two
