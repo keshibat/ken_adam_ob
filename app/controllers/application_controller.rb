@@ -1,15 +1,19 @@
 class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
-        # r = Seller.all
-        # x = Seller.joins(:users).where(email: params["user"]["email"]).first
+        # check if user has a business package
+        check1 = User.where(email: params["user"]["email"]).first
+        check2 = Seller.where(user_id: check1).first
+        # check if user has never signed up
         if params["commit"] == 'Sign up'
-            check = User.find_by(email: params["user"]["email"])
+            signup = User.find_by(email: params["user"]["email"])
             # byebug
-            pages_path(:id => check[:id])
-        elsif Seller.joins(:users).where(email: params["user"]["email"]).first
-            user_root_path
+            checks_path(:id => signup[:id])
+        elsif check2 == nil
+            # send to buyers listings
+            product_purchased_listings_path
         else
-            user_root_path
+            # send to sellers listings
+            product_listings_path(:seller_id => check2.id)
         end
     end
 

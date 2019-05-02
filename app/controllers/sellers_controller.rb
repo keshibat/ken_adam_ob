@@ -33,7 +33,7 @@ class SellersController < ApplicationController
 
     respond_to do |format|
       if @seller.save
-        format.html { redirect_to @seller, notice: 'Seller was successfully created.' }
+        format.html { redirect_to product_listings_path(:seller_id => params[:id]), notice: 'Seller was successfully created.' }
         format.json { render :show, status: :created, location: @seller }
       else
         @cuisine = Cuisine.all
