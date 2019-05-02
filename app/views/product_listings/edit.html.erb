@@ -1,4 +1,8 @@
 <h1>Editing Product Listing</h1>
+<p>
+    <strong>Current Product Image:</strong>
+    <%= image_tag @product_listing.picture if @product_listing.picture.attached? %>
+</p>
 
 <%= render 'form', product_listing: @product_listing %>
 

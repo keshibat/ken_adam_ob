@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Product Image</th>
       <th>Product name</th>
       <th>Description</th>
       <th>Was price</th>
@@ -18,12 +19,13 @@
   <tbody>
     <% @product_listings.each do |product_listing| %>
       <tr>
+        <td><%= image_tag product_listing.picture if product_listing.picture.attached? %></td>
         <td><%= product_listing.product_name %></td>
         <td><%= product_listing.description %></td>
         <td><%= product_listing.was_price %></td>
         <td><%= product_listing.price %></td>
         <td><%= product_listing.expiry_date %></td>
-        <td><%= product_listing.seller %></td>
+        <!-- <td><%= product_listing.seller %></td> -->
         <td><%= link_to 'Show', product_listing %></td>
         <td><%= link_to 'Edit', edit_product_listing_path(product_listing) %></td>
         <td><%= link_to 'Destroy', product_listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
