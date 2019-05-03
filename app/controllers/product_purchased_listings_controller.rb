@@ -4,12 +4,13 @@ class ProductPurchasedListingsController < ApplicationController
   # GET /product_purchased_listings
   # GET /product_purchased_listings.json
   def index
-    @product_purchased_listings = ProductPurchasedListing.all
+    @product_purchased_listings = ProductPurchasedListing.where(user_id: current_user[:id])
   end
 
   # GET /product_purchased_listings/1
   # GET /product_purchased_listings/1.json
   def show
+    @product_purchased_listings = ProductPurchasedListing.where(id: params[:id]).first
   end
 
   # GET /product_purchased_listings/new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_045306) do
+ActiveRecord::Schema.define(version: 2019_05_03_042500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2019_05_01_045306) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "product_purchased_listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_purchased_listing_id"], name: "index_payments_on_product_purchased_listing_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "product_listings", force: :cascade do |t|
@@ -114,6 +123,8 @@ ActiveRecord::Schema.define(version: 2019_05_01_045306) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "payments", "product_purchased_listings"
+  add_foreign_key "payments", "users"
   add_foreign_key "product_listings", "sellers"
   add_foreign_key "product_purchased_listings", "users"
   add_foreign_key "product_reviews", "product_listings"

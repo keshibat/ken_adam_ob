@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @company.company_name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product Image</th>
+      <th>Description</th>
+      <th>Was Price</th>
+      <th>Price</th>
+      <th>Expiry Date</th>
+      <th>Buy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @views.each do |view| %>
+      <tr>
+        <td><%= image_tag view.picture if view.picture.attached? %></td>
+        <td><%= view.product_name %></td>
+        <td><%= view.description %></td>
+        <td><%= view.was_price %></td>
+        <td><%= view.price %></td>
+        <td><%= view.expiry_date %></td>
+        <td><%= link_to "Let's go", chosen_path(:id => view.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Back', root_path %>

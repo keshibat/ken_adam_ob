@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Product Image</th>
       <th>Product name</th>
       <th>Description</th>
       <th>Was price</th>
@@ -27,7 +28,6 @@
         <td><%= product_purchased_listing.expiry_date %></td>
         <td><%= product_purchased_listing.user %></td>
         <td><%= link_to 'Show', product_purchased_listing %></td>
-        <td><%= link_to 'Edit', edit_product_purchased_listing_path(product_purchased_listing) %></td>
         <td><%= link_to 'Destroy', product_purchased_listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Product Purchased Listing', new_product_purchased_listing_path %>
+<%= link_to 'Home', root_path %>

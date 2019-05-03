@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   resources :product_purchased_listings
   resources :sellers
   get "/", to: "pages#index", as: "root"
+  get "/restaurants/:id", to: "pages#show", as: "page"
+  post "/payments", to: "payments#stripe"
+  get "/payments/success", to: "payments#success"
+  get "/payments/chosen-deal/:id", to: "payments#payment", as: "chosen"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

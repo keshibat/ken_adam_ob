@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>KENDO DEALS</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company Image</th>
+      <th>Company name</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Address</th>
+      <th>Website url</th>
+      <th>Google reviews url</th>
+      <th>Cuisine</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @views.each do |view| %>
+      <tr>
+        <td><%= image_tag view.picture if view.picture.attached? %></td>
+        <td><%= view.company_name %></td>
+        <td><%= view.description %></td>
+        <td><%= view.location.city %></td>
+        <td><%= view.address %></td>
+        <td><%= view.website_url %></td>
+        <td><%= view.google_reviews_url %></td>
+        <td><%= view.cuisine.name %></td>
+        <td><%= link_to 'Show', page_path(:id => view.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

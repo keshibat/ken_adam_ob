@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :product_purchased_listings, dependent: :destroy
   has_many :product_reviews, dependent: :destroy
   has_one :seller, dependent: :destroy
+  has_many :payments
 end

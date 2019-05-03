@@ -41,10 +41,12 @@
     <%= form.date_select :expiry_date %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div>
+      <%= form.label :picture  %>
+      <%= form.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg"   %>
   </div>
+
+  <%= form.hidden_field :user_id, :value => params[:id] %>
 
   <div class="actions">
     <%= form.submit %>

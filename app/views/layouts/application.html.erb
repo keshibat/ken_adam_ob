@@ -6,13 +6,15 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://js.stripe.com/v3/"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= link_to "logout", destroy_user_session_path, method: "DELETE" if user_signed_in? %>
+    <%= render "generic/header" %>
+    <% link_to "logout", destroy_user_session_path, method: "DELETE" if user_signed_in? %>
     <%= yield %>
   </body>
 </html>
