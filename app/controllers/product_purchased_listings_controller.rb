@@ -9,9 +9,6 @@ class ProductPurchasedListingsController < ApplicationController
     if current_user == nil
       redirect_to user_session_path
     else
-      # if params[:kendo] == "refresh"
-      #   redirect_to :back
-      # end
       @product_purchased_listings = ProductPurchasedListing.where(user_id: current_user[:id])
       # cart quantity check
       @quantity = Cart.where(user_id: current_user.id).count
