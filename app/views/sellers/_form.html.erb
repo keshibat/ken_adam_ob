@@ -51,7 +51,7 @@
       <%= form.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg"   %>
   </div>
 
-  <%= form.hidden_field :user_id, :value => params[:id] %>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
   
   <div class="actions">
       <%= form.submit %>

@@ -8,7 +8,7 @@
 
 country = "Australia"
 state = "NSW"
-cities = ["Sydney CBD"]
+cities = ["Sydney CBD", "Sydney Newtown", "Sydney Bondi Beach", "Sydney Maroubra", "Sydney Randwick", "Sydney Redfern", "Sydney Surry Hills", "Sydney King Cross", "Sydney Kingsford", "Sydney The Rocks", "Sydney North Sydney"]
 
 cities.each do |c|
     Location.create(country: country, state: state, city: c)

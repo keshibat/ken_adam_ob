@@ -60,7 +60,7 @@ class ProductListingsController < ApplicationController
     # get seller id
     @current_seller = Seller.where(user_id: current_user.id).first
     # create to see if product name exists - like a username
-    @prod_name = ProductListing.where(product_name: params[:product_listing][:product_name]).first
+    @prod_name = ProductListing.where(product_name: params[:product_listing][:product_name], seller_id: @current_seller.id).first
     unless @prod_name
       @product_listing = ProductListing.new(product_listing_params)
       respond_to do |format|

@@ -17,12 +17,24 @@ class SellersController < ApplicationController
     @seller = Seller.new
     @cuisine = Cuisine.all
     @city = Location.all
+    if current_user != nil
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end
   end
 
   # GET /sellers/1/edit
   def edit
     @cuisine = Cuisine.all
     @city = Location.all
+    if current_user != nil
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end
   end
 
   # POST /sellers
@@ -49,7 +61,7 @@ class SellersController < ApplicationController
   def update
     respond_to do |format|
       if @seller.update(seller_params)
-        format.html { redirect_to @seller, notice: 'Seller was successfully updated.' }
+        format.html { redirect_to product_listings_path, notice: 'Seller was successfully updated.' }
         format.json { render :show, status: :ok, location: @seller }
       else
         @cuisine = Cuisine.all
