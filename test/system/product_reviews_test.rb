@@ -14,6 +14,7 @@ class ProductReviewsTest < ApplicationSystemTestCase
     visit product_reviews_url
     click_on "New Product Review"
 
+    fill_in "Name", with: @product_review.name
     fill_in "Product listing", with: @product_review.product_listing_id
     fill_in "Review", with: @product_review.review
     fill_in "User", with: @product_review.user_id
@@ -27,6 +28,7 @@ class ProductReviewsTest < ApplicationSystemTestCase
     visit product_reviews_url
     click_on "Edit", match: :first
 
+    fill_in "Name", with: @product_review.name
     fill_in "Product listing", with: @product_review.product_listing_id
     fill_in "Review", with: @product_review.review
     fill_in "User", with: @product_review.user_id

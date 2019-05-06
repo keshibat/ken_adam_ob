@@ -1,13 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
-  <strong>Product Image:</strong>
-  <%= image_tag @product_purchased_listing.picture if @product_purchased_listing.picture.attached? %>
+  <strong>QR CODE:</strong>
+  <%= image_tag @product_purchased_listing.qrcode %>
 </p>
 
 <p>
   <strong>Product name:</strong>
   <%= @product_purchased_listing.product_name %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @product_purchased_listing.company_name %>
 </p>
 
 <p>
@@ -17,12 +23,17 @@
 
 <p>
   <strong>Was price:</strong>
-  <%= @product_purchased_listing.was_price %>
+  $<%= number_with_precision(@product_purchased_listing.was_price, precision: 2) %>
+</p>
+
+<p>
+  <strong>Kendo Discount:</strong>
+  <%= (Float(@product_purchased_listing.was_price.to_i - @product_purchased_listing.price.to_i) / @product_purchased_listing.was_price.to_i * 100).ceil %>% Kendo Savings
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @product_purchased_listing.price %>
+  $<%= number_with_precision(@product_purchased_listing.price, precision: 2) %>
 </p>
 
 <p>
@@ -33,11 +44,6 @@
 <p>
   <strong>Expiry date:</strong>
   <%= @product_purchased_listing.expiry_date %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @product_purchased_listing.user %>
 </p>
 
 <%= link_to 'Back To My Profile', product_purchased_listings_path %>

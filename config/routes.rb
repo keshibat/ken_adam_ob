@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :product_reviews
+  resources :carts
   devise_for :users, path: "/", path_names: {sign_in: "login"}
   get "/checks/:id", to: "checks#index", as: "checks"
-  resources :product_reviews
   resources :product_listings
   resources :product_purchased_listings
   resources :sellers
@@ -10,6 +11,6 @@ Rails.application.routes.draw do
   get "/restaurants/:id", to: "pages#show", as: "page"
   post "/payments", to: "payments#stripe"
   get "/payments/success", to: "payments#success"
-  get "/payments/chosen-deal/:id", to: "payments#payment", as: "chosen"
+  get "/payments/chosen-deal", to: "payments#payment", as: "chosen"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

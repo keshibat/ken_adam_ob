@@ -1,47 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @company.company_name %></h1>
+<h1>Payment Time</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Product Image</th>
+      <th>Image</th>
+      <th>Company name</th>
+      <th>Product name</th>
       <th>Description</th>
-      <th>Was Price</th>
+      <th>Was price</th>
+      <th>Kendo Discount</th>
       <th>Price</th>
-      <th>Expiry Date</th>
-      <th>Buy</th>
+      <th>Expiry date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <% @carts.each do |cart| %>
       <tr>
-        <td><%= image_tag @chosenProduct.picture if @chosenProduct.picture.attached? %></td>
-        <td><%= @chosenProduct.product_name %></td>
-        <td><%= @chosenProduct.description %></td>
-        <td><%= @chosenProduct.was_price %></td>
-        <td><%= @chosenProduct.price %></td>
-        <td><%= @chosenProduct.expiry_date %></td>
-        <td><button id="stripePayment">Buy Now $<%= number_with_precision(@chosenProduct.price / 100.0 ,precision: 2) %></button></td>
+        <td><%= image_tag("kendo-deals.fw.png", :alt => "Kendo image logo") %></td>
+        <td><%= cart.company_name %></td>
+        <td><%= cart.product_name %></td>
+        <td><%= cart.description %></td>
+        <td>$<%= number_with_precision(cart.was_price, precision: 2) %></td>
+        <td><%= (Float(cart.was_price.to_i - cart.price.to_i) / cart.was_price.to_i * 100).ceil %>% Kendo Savings</td>
+        <td>$<%= number_with_precision(cart.price, precision: 2) %></td>
+        <td><%= cart.expiry_date %></td>
+        <td><%= link_to 'Remove from Cart', cart, method: :delete %></td>
       </tr>
+    <% end %>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td>Number of deals: <%= @quantity %></td></tr>
+    <tr><td>Total saving: $25.00</td></tr>
+    <tr><td>Grand Total: $<%= number_with_precision(@sumForStripe, precision: 2) %></td></tr>
+    <tr><td><button id="stripePayment">Buy Now</button></td></tr>
   </tbody>
 </table>
+<br>
+<p><%= link_to 'Back to Cart', carts_path %></p>
 
+<br>
+<p><%= link_to 'Back To My Profile', product_purchased_listings_path %> | <%= link_to 'Continue Shopping', root_path %></p>
 
 <script>
-        document.getElementById("stripePayment").addEventListener("click", function(){
-            var stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, :public) %>');
-        
-            stripe.redirectToCheckout({
-                sessionId: '<%= @stripe_session_id %>',
-            }).then(function (result) {
-            // If `redirectToCheckout` fails due to a browser or network
-            // error, display the localized error message to your customer
-            // using `result.error.message`.
-            });
-        
-        })
+    document.getElementById("stripePayment").addEventListener("click", function(){
+        var stripe = Stripe('<%= Rails.application.credentials.dig(:stripe, :public) %>');
+    
+        stripe.redirectToCheckout({
+            sessionId: '<%= @stripe_session_id %>',
+        }).then(function (result) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer
+        // using `result.error.message`.
+        });
+    
+    })
 </script>
-<br>
-<%= link_to 'Back', root_path %>

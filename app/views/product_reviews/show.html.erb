@@ -1,19 +1,74 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Restaurant - <%= @company.company_name %></h1>
+<p>
+    <strong>Product Image:</strong>
+    <%= image_tag @product_listing.picture if @product_listing.picture.attached? %>
+  </p>
+  
+  <p>
+    <strong>Product name:</strong>
+    <%= @product_listing.product_name %>
+  </p>
+  
+  <p>
+    <strong>Description:</strong>
+    <%= @product_listing.description %>
+  </p>
+  
+  <p>
+    <strong>Was price:</strong>
+    $<%= number_with_precision(@product_listing.was_price, precision: 2) %>
+  </p>
+
+  <p>
+    <strong>Kendo Discount:</strong>
+    <%= (Float(@product_listing.was_price.to_i - @product_listing.price.to_i) / @product_listing.was_price.to_i * 100).ceil %>% Kendo Savings
+  </p>
+  
+  <p>
+    <strong>Price:</strong>
+    $<%= number_with_precision(@product_listing.price, precision: 2) %>
+  </p>
+  
+  <p>
+    <strong>Expiry date:</strong>
+    <%= @product_listing.expiry_date %>
+  </p>
+
+<h1>Product Reviews</h1>
+<% @views.each do |review| %>
+<p>
+  <strong>Name:</strong>
+  <%= review.name %>
+</p>
+
 <p>
   <strong>Review:</strong>
-  <%= @product_review.review %>
+  <%= review.review %>
 </p>
+<% end %>
+<% if current_user != nil || (current_user != nil && @sellerCheck == nil) %>
+    <h1>Add a Product Reviews</h1>
 
-<p>
-  <strong>Product listing:</strong>
-  <%= @product_review.product_listing %>
-</p>
+    <%= form_tag product_reviews_path do %>
 
-<p>
-  <strong>User:</strong>
-  <%= @product_review.user %>
-</p>
+    <div class="field">
+      <%= label_tag(:name, "Enter your name") %>
+      <%= text_field_tag(:name) %>
+    </div>
 
-<%= link_to 'Edit', edit_product_review_path(@product_review) %> |
-<%= link_to 'Back', product_reviews_path %>
+    <div class="field">
+      <%= label_tag(:review, "Enter your review") %>
+      <%= text_field_tag(:review) %>
+    </div>
+
+    <%= hidden_field_tag(:id, params[:id]) %>
+
+    <div class="actions">
+      <%= submit_tag("Submit Review") %>
+    </div>
+    <% end %>
+<% end %>
+
+<%= link_to "Back to Restaurant's Deals", page_path(:id => @company.id) %>

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>KENDO DEALS</h1>
-
+<%= image_tag("kendo-deals.fw.png", :alt => "Kendo image logo") %>
 <table>
   <thead>
     <tr>
@@ -26,10 +26,10 @@
         <td><%= view.description %></td>
         <td><%= view.location.city %></td>
         <td><%= view.address %></td>
-        <td><%= view.website_url %></td>
-        <td><%= view.google_reviews_url %></td>
+        <td><%= link_to 'Website', view.website_url, target: "_blank" %></td>
+        <td><%= link_to 'Google Reviews', view.google_reviews_url, target: "_blank" %></td>
         <td><%= view.cuisine.name %></td>
-        <td><%= link_to 'Show', page_path(:id => view.id) %></td>
+        <td><%= link_to 'View Restaurant', page_path(:id => view.id) %></td>
       </tr>
     <% end %>
   </tbody>

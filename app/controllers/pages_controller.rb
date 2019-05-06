@@ -7,13 +7,26 @@ class PagesController < ApplicationController
     @views = Seller.all
     @location = Location.all
     @cuisine = Cuisine.all
+    if current_user != nil
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end
   end
 
   # GET /sellers/1
   # GET /sellers/1.json
   def show
     @views = ProductListing.where(seller_id: params[:id])
+    @formInfo = ProductListing.where(seller_id: params[:id]).first
     @company = Seller.find(params[:id])
+    if current_user != nil
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end
   end
 
   # GET /sellers/new

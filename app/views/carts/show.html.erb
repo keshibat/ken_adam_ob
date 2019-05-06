@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @cart.company_name %>
+</p>
+
+<p>
+  <strong>Product name:</strong>
+  <%= @cart.product_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @cart.description %>
+</p>
+
+<p>
+  <strong>Was price:</strong>
+  <%= @cart.was_price %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @cart.price %>
+</p>
+
+<p>
+  <strong>Reference number:</strong>
+  <%= @cart.reference_number %>
+</p>
+
+<p>
+  <strong>Expiry date:</strong>
+  <%= @cart.expiry_date %>
+</p>
+
+<p>
+  <strong>Qrcode:</strong>
+  <%= @cart.qrcode %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cart.user %>
+</p>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>

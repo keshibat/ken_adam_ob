@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
+    
     def after_sign_in_path_for(resource)
-        # check if user has a business package
-        check1 = User.where(email: params["user"]["email"]).first
-        check2 = Seller.where(user_id: check1).first
+        if current_user.id != nil
+            # check if user has a business package
+            check1 = User.where(id: current_user.id).first
+        else
+            check1 = User.where(email: params["user"]["email"]).first
+        end
+        check2 = Seller.where(user_id: check1.id).first
         # check if user has never signed up
         if params["commit"] == 'Sign up'
             signup = User.find_by(email: params["user"]["email"])

@@ -1,15 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @company.company_name %></h1>
+<p><%= @company.description %></p>
+<p><%= link_to 'Website', @company.website_url, target: "_blank" %></p>
+<p><%= link_to 'Google Reviews', @company.google_reviews_url, target: "_blank" %></p>
 
 <table>
   <thead>
     <tr>
       <th>Product Image</th>
+      <th>Product Name</th>
       <th>Description</th>
       <th>Was Price</th>
+      <th>Kendo Discount</th>
       <th>Price</th>
       <th>Expiry Date</th>
+      <th>Product Review</th>
       <th>Buy</th>
       <th colspan="3"></th>
     </tr>
@@ -21,13 +27,22 @@
         <td><%= image_tag view.picture if view.picture.attached? %></td>
         <td><%= view.product_name %></td>
         <td><%= view.description %></td>
-        <td><%= view.was_price %></td>
-        <td><%= view.price %></td>
+        <td>$<%= number_with_precision(view.was_price, precision: 2) %></td>
+        <td><%= (Float(view.was_price.to_i - view.price.to_i) / view.was_price.to_i * 100).ceil %>% Kendo Savings</td>
+        <td>$<%= number_with_precision(view.price, precision: 2) %></td>
+        <td><%= link_to "Product Review", product_review_path(view.id) %></td>
         <td><%= view.expiry_date %></td>
-        <td><%= link_to "Let's go", chosen_path(:id => view.id) %></td>
+        <% if current_user != nil && @sellerCheck == nil %>
+          <td><%= link_to "Add to cart", carts_path(:id => view.id) %></td>
+        <% elsif @sellerCheck != nil %>
+          <td>Seller cannot buy</td>
+        <% else %>
+          <td><%= link_to "Add to cart", user_session_path %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 <br>
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back to Restaurants', root_path %>

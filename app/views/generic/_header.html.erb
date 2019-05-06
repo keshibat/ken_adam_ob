@@ -1,14 +1,24 @@
 <header>
     <% if user_signed_in? %>
-    <%= link_to "logout", destroy_user_session_path, method: "DELETE" %>
-    
-       <% else%>
+        <span><%= link_to "Home", root_path %></span>
+        <span> | <%= current_user.email %></span>
+        <% if @sellerCheck == nil %>
+            <span> | <%= link_to "My Profile", product_purchased_listings_path %></span>
+            <% if @quantity > 0 %>
+                <span> | <%= link_to "Cart #{@quantity}", carts_path %></span>
+            <% else %>
+                <span> | <%= link_to "Cart", carts_path %></span>
+            <% end %>
+        <% else %>
+            <span> | <%= link_to "My Profile", product_listings_path %></span>
+        <% end %>
+        <span> | <%= link_to "logout", destroy_user_session_path, method: "DELETE" %></span>
+    <% else %>
        <div class="nav">
            <div class = "buttons">
                <button type="button" class="btn btn-primary btn-sm" > <%=  link_to "logIn", new_user_session_path %></button>
                <button type="button" class="btn btn-primary btn-sm"><%= link_to "Singup", new_user_registration_path %></button>
            </div>
        </div>
-    
-       <% end %>
+    <% end %>
 </header>

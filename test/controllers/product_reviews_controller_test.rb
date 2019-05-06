@@ -17,7 +17,7 @@ class ProductReviewsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create product_review" do
     assert_difference('ProductReview.count') do
-      post product_reviews_url, params: { product_review: { product_listing_id: @product_review.product_listing_id, review: @product_review.review, user_id: @product_review.user_id } }
+      post product_reviews_url, params: { product_review: { name: @product_review.name, product_listing_id: @product_review.product_listing_id, review: @product_review.review, user_id: @product_review.user_id } }
     end
 
     assert_redirected_to product_review_url(ProductReview.last)
@@ -34,7 +34,7 @@ class ProductReviewsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update product_review" do
-    patch product_review_url(@product_review), params: { product_review: { product_listing_id: @product_review.product_listing_id, review: @product_review.review, user_id: @product_review.user_id } }
+    patch product_review_url(@product_review), params: { product_review: { name: @product_review.name, product_listing_id: @product_review.product_listing_id, review: @product_review.review, user_id: @product_review.user_id } }
     assert_redirected_to product_review_url(@product_review)
   end
 

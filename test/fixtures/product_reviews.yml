@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  review: MyString
+  name: MyString
+  review: MyText
   product_listing: one
   user: one
 
 two:
-  review: MyString
+  name: MyString
+  review: MyText
   product_listing: two
   user: two

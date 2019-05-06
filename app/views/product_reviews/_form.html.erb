@@ -12,19 +12,17 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
     <%= form.label :review %>
-    <%= form.text_field :review %>
+    <%= form.text_area :review %>
   </div>
 
-  <div class="field">
-    <%= form.label :product_listing_id %>
-    <%= form.text_field :product_listing_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%= form.hidden_field :product_listing_id, :value => params[:id] %>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
 
   <div class="actions">
     <%= form.submit %>

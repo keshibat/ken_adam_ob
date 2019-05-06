@@ -23,12 +23,12 @@
 
   <div class="field">
     <%= form.label :was_price %>
-    <%= form.number_field :was_price %>
+    <%= form.number_field :was_price, value: number_with_precision(form.object.was_price, precision: 2) %>
   </div>
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price, value: number_with_precision(form.object.price, precision: 2) %>
   </div>
 
   <div class="field">

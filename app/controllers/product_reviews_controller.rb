@@ -4,12 +4,30 @@ class ProductReviewsController < ApplicationController
   # GET /product_reviews
   # GET /product_reviews.json
   def index
-    @product_reviews = ProductReview.all
+    @product_reviews = ProductReview.where(user_id: current_user.id)
+    # if not signed in
+    if current_user != nil
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end 
   end
 
   # GET /product_reviews/1
   # GET /product_reviews/1.json
   def show
+
+    @product_listing = ProductListing.find(params[:id])
+    @views = ProductReview.where(product_listing_id: params[:id])
+    @company = Seller.find(@product_listing.seller_id)
+    # if not signed in
+    if current_user != nil
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end  
   end
 
   # GET /product_reviews/new
@@ -24,16 +42,10 @@ class ProductReviewsController < ApplicationController
   # POST /product_reviews
   # POST /product_reviews.json
   def create
-    @product_review = ProductReview.new(product_review_params)
-
-    respond_to do |format|
-      if @product_review.save
-        format.html { redirect_to @product_review, notice: 'Product review was successfully created.' }
-        format.json { render :show, status: :created, location: @product_review }
-      else
-        format.html { render :new }
-        format.json { render json: @product_review.errors, status: :unprocessable_entity }
-      end
+    if current_user != nil
+      # add review
+      ProductReview.create(name: params[:name], review: params[:review], product_listing_id: params[:id], user_id: current_user.id)
+      redirect_to product_review_path(params[:id])
     end
   end
 
@@ -54,7 +66,8 @@ class ProductReviewsController < ApplicationController
   # DELETE /product_reviews/1
   # DELETE /product_reviews/1.json
   def destroy
-    @product_review.destroy
+    prod_delete = ProductReview.find(params[:id])
+    prod_delete.destroy
     respond_to do |format|
       format.html { redirect_to product_reviews_url, notice: 'Product review was successfully destroyed.' }
       format.json { head :no_content }
@@ -64,11 +77,11 @@ class ProductReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product_review
-      @product_review = ProductReview.find(params[:id])
+      # @product_review = ProductReview.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_review_params
-      params.require(:product_review).permit(:review, :product_listing_id, :user_id)
+      params.require(:product_review).permit(:name, :review, :product_listing_id, :user_id)
     end
 end

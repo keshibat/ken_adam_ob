@@ -1,0 +1,62 @@
+<%= form_with(model: cart, local: true) do |form| %>
+  <% if cart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cart.errors.count, "error") %> prohibited this cart from being saved:</h2>
+
+      <ul>
+      <% cart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :company_name %>
+    <%= form.text_field :company_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_name %>
+    <%= form.text_field :product_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :was_price %>
+    <%= form.number_field :was_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reference_number %>
+    <%= form.text_field :reference_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expiry_date %>
+    <%= form.date_select :expiry_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :qrcode %>
+    <%= form.text_area :qrcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

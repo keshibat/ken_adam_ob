@@ -1,16 +1,35 @@
 class ProductPurchasedListingsController < ApplicationController
+  require 'rqrcode_png'
   before_action :set_product_purchased_listing, only: [:show, :edit, :update, :destroy]
 
   # GET /product_purchased_listings
   # GET /product_purchased_listings.json
   def index
-    @product_purchased_listings = ProductPurchasedListing.where(user_id: current_user[:id])
+    # if not signed in
+    if current_user == nil
+      redirect_to user_session_path
+    else
+      # if params[:kendo] == "refresh"
+      #   redirect_to :back
+      # end
+      @product_purchased_listings = ProductPurchasedListing.where(user_id: current_user[:id])
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # byebug
+    end
   end
 
   # GET /product_purchased_listings/1
   # GET /product_purchased_listings/1.json
   def show
-    @product_purchased_listings = ProductPurchasedListing.where(id: params[:id]).first
+    # if not signed in
+    if current_user == nil
+      redirect_to user_session_path
+    else
+      @product_purchased_listings = ProductPurchasedListing.find(params[:id])
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+    end
   end
 
   # GET /product_purchased_listings/new
