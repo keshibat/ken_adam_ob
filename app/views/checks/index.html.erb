@@ -1,3 +1,12 @@
 <h1>Please select from one of the following</h1>
 <%= link_to("Personal", product_purchased_listings_path) %> | 
 <%= link_to("Business", new_seller_path(:id => params[:id])) %>
+
+
+
+<% form_tag projects_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>

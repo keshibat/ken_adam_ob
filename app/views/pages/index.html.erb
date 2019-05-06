@@ -1,0 +1,38 @@
+
+
+<h1 class="Kendo">Kendo Dodeal</h1>
+
+<div>
+Coupon
+</div>
+
+<div>
+Restaurant 
+</div>
+
+<% @product_listings.each do |product_listing| %>
+
+    <div class="card">
+        <%= image_tag product_listing.picture if product_listing.picture.attached? %>
+        <p><%= product_listing.product_name %></p>
+        <p><%= product_listing.description %></p>
+         <p><%= product_listing.was_price %></p>
+          <p><%= product_listing.price %></p>
+          <p><%= product_listing.expiry_date %></p>
+          <p><%= product_listing.seller.company_name %></p>
+    </div>
+<% end %>
+
+<% @sellers.each do |seller| %>
+
+    <div class="card">
+        <%= image_tag seller.picture if seller.picture.attached? %>
+        <p><%= seller.company_name %></p>
+        <p><%= seller.description %></p>
+         <p><%= seller.address %></p>
+          <p><%= seller.website_url %></p>
+          <p><%= seller.google_reviews_url %></p>
+          <p><%= seller.cuisine.name %></p>
+    </div>
+<% end %>
+

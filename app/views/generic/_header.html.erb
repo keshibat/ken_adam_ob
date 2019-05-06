@@ -1,0 +1,14 @@
+<header>
+<% if user_signed_in? %>
+ <%= link_to "logout", destroy_user_session_path, method: "DELETE" %>
+
+    <% else%>
+    <div class="nav">
+        <div class = "buttons">
+            <button type="button" class="btn btn-primary btn-sm" > <%=  link_to "logIn", new_user_session_path %></button>
+            <button type="button" class="btn btn-primary btn-sm"><%= link_to "Singup", new_user_registration_path %></button>
+        </div>
+    </div>
+
+    <% end %>
+</header>
