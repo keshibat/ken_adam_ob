@@ -4,7 +4,11 @@ class PagesController < ApplicationController
   # GET /sellers
   # GET /sellers.json
   def index
-    @views = Seller.all
+    if params[:search] != nil
+      @views = Seller.where(company_name: params[:search])
+    else
+      @views = Seller.all
+    end
     @location = Location.all
     @cuisine = Cuisine.all
     if current_user != nil
