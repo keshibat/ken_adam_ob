@@ -65,15 +65,6 @@ ActiveRecord::Schema.define(version: 2019_05_04_113806) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "payments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "product_purchased_listing_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_purchased_listing_id"], name: "index_payments_on_product_purchased_listing_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
-  end
-
   create_table "product_listings", force: :cascade do |t|
     t.string "product_name"
     t.text "description"
@@ -142,7 +133,6 @@ ActiveRecord::Schema.define(version: 2019_05_04_113806) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "carts", "users"
-  add_foreign_key "payments", "users"
   add_foreign_key "product_listings", "sellers"
   add_foreign_key "product_purchased_listings", "users"
   add_foreign_key "product_reviews", "product_listings"
