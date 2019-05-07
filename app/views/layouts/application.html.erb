@@ -13,7 +13,7 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <% unless controller.controller_name == 'checks' %>
+    <% unless controller.controller_name == 'checks' || controller.controller_name == 'payments_success' %>
       <%= render "generic/header" %>
     <% end %>
     <% link_to "logout", destroy_user_session_path, method: "DELETE" if user_signed_in? %>

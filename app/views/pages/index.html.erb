@@ -2,6 +2,16 @@
 
 <h1>KENDO DEALS</h1>
 <%= image_tag("kendo-deals.fw.png", :alt => "Kendo image logo") %>
+
+<%= form_tag(root_path, method: "get") do %>
+  <%= label_tag(:search, "Search") %>
+  <%= text_field_tag(:search) %>
+  <%= label_tag(:cuisine, "Cuisine") %>
+  <%= select_tag(:cuisine, options_for_select(@cuisine_option.map{|k,v| [k,v]})) %>
+  <%= label_tag(:city, "Location") %>
+  <%= select_tag(:city, options_for_select(@city_option.map{|k,v| [k,v]})) %>
+  <%= submit_tag("Search") %>
+<% end %>
 <table>
   <thead>
     <tr>

@@ -4,9 +4,59 @@ class PagesController < ApplicationController
   # GET /sellers
   # GET /sellers.json
   def index
-    @views = Seller.all
-    @location = Location.all
+    @city = Location.all
     @cuisine = Cuisine.all
+    if params[:search] != nil
+      if params[:city] == "%"
+        @query_city = "%"
+      else
+        @query_city = "%#{params[:city]}%"
+      end
+
+      if params[:cuisine] == "%"
+        @query_cuisine = "%"
+      else
+        @query_cuisine = "%#{params[:cuisine]}%"
+      end
+
+
+      # @query_city = Location.where("city ILIKE ?", "%#{params[:city]}%").first
+      # @query_cuisine = Cuisine.where("name ILIKE ?", "%#{params[:cuisine]}%").first
+      # @views = Seller.where('company_name ILIKE ? AND ', "%#{params[:search]}%", location_id: @query_city.id, cuisine_id: @query_cuisine.id)
+      # @views = Seller.where('company_name ILIKE ? AND location_id = ? AND cuisine_id = ?', "%#{params[:search]}%", @query_city.id, @query_cuisine.id)
+      # @views = Seller.where('company_name ILIKE ? AND location_id ILIKE ? AND cuisine_id ILIKE ?', "%#{params[:search]}%", "%", "%")
+      
+      # @views = Seller.where('company_name ILIKE ?', "%#{params[:search]}%")
+
+      # User.where("id = ? AND nome LIKE ?", id, "%#{nome}%")
+      # "name LIKE ? OR postal_code LIKE ?", "%#{search}%", "%#{search}%"
+      # "name LIKE CONCAT('%',?,'%') OR postal_code LIKE CONCAT('%',?,'%')", search, search)
+      # Seller.where('company_name ILIKE ?', "%#{params[:search]}%")  ####{'company_name ILIKE ?', "%#{params[:search]}%"}, 
+      # @views = Seller.joins(:location, :cuisine).where(cuisines: {'name ILIKE ?' => "%#{params[:search]}%"})
+      # @views = Seller.joins(:location, :cuisine).where(sellers: {'company_name ILIKE ?': "%#{params[:search]}%"}, locations: {"city ILIKE ?": "%#{params[:city]}%"}, cuisines: {"name ILIKE ?": "%#{params[:cuisine]}%"})
+      # @views = Seller.joins(:location, :cuisine).where('company_name ILIKE ? AND location_id ILIKE ? AND cuisine_id ILIKE ?', "%#{params[:search]}%", "%#{params[:city]}%", "%#{params[:cuisine]}%")
+      
+      @views = Seller.joins(:location, :cuisine).where("company_name ILIKE ?", "%#{params[:search]}%").where("locations.city ILIKE ?", @query_city).where("cuisines.name ILIKE ?", @query_cuisine)
+      # @views = Seller.joins(:location, :cuisine).where("company_name ILIKE ?", "%#{params[:search]}%").(Location.where(locations: {"city ILIKE ?": @query_city})).(Cuisine.where(cuisines: {"name ILIKE ?": @query_cuisine}))
+      # @views = Seller.includes(:location, :cuisine).where("company_name ILIKE ?", "%#{params[:search]}%").or(Location.where("city ILIKE ?", @query_city)).or(Cuisine.where("name ILIKE ?", @query_cuisine))
+
+
+            # Seller.joins(:location, :cuisine).where("company_name ILIKE ?", "El Jannah").orwhere(locations: {city: "Sydney CBD"}, cuisines: {name: "Turkish"})
+      # @views = Seller.joins(:location, :cuisine).where(location: {"city ILIKE ?": "%#{params[:city]}%"})
+      # User.joins(:user_info, :forms).where(user_infos: {state: "open"}, forms: {state: "AZ"})
+    else
+      @views = Seller.all
+    end
+    # hash city
+    @city_option = {"Any location": "%"}
+    @city.each do |val|
+      @city_option[val[:city]] = val[:city]
+    end
+    # hash cuisine
+    @cuisine_option = {"Any cuisine": "%"}
+    @cuisine.each do |val|
+      @cuisine_option[val[:name]] = val[:name]
+    end
     if current_user != nil
       # cart quantity check
       @quantity = Cart.where(user_id: current_user.id).count
