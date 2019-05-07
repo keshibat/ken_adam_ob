@@ -8,7 +8,11 @@
   <%= label_tag(:city, "Location") %>
   <%= select_tag(:city, options_for_select(@city_option.map{|k,v| [k,v]})) %>
   <%= submit_tag("Search") %>
+  <%= link_to "Clear Search", root_path %>
 <% end %>
+
+<h2>Your search</h2>
+<p><%= "Name: #{@name_display}, Cuisine: #{@cuisine_display}, Location: #{@city_display}" %></p>
 
 <table>
   <thead>

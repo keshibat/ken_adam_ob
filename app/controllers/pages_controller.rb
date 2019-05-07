@@ -7,16 +7,27 @@ class PagesController < ApplicationController
     @city = Location.all
     @cuisine = Cuisine.all
     if params[:search] != nil
+
+      if params[:search].blank?
+        @name_display = "Any Location"
+      else
+        @name_display = params[:search]
+      end
+
       if params[:city] == "%"
         @query_city = "%"
+        @city_display = "Any Location"
       else
         @query_city = "%#{params[:city]}%"
+        @city_display = params[:city]
       end
 
       if params[:cuisine] == "%"
         @query_cuisine = "%"
+        @cuisine_display = "Any Location"
       else
         @query_cuisine = "%#{params[:cuisine]}%"
+        @cuisine_display = params[:cuisine]
       end
 
 
