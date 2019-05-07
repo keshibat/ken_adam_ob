@@ -10,9 +10,10 @@
   <%= submit_tag("Search") %>
   <%= link_to "Clear Search", root_path %>
 <% end %>
-
-<h2>Your search</h2>
-<p><%= "Name: #{@name_display}, Cuisine: #{@cuisine_display}, Location: #{@city_display}" %></p>
+<% if params[:search] != nil %>
+  <h2>Your search</h2>
+  <p><%= "Name: #{@name_display}, Cuisine: #{@cuisine_display}, Location: #{@city_display}" %></p>
+<% end %>
 
 <table>
   <thead>
