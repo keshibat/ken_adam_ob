@@ -50,10 +50,14 @@
     <strong>Review:</strong>
     <%= review.review %>
   </p>
+
+  <p>
+      <%= review.created_at %>
+    </p>
   <% end %>
 <% end %>
 <% if current_user != nil && @sellerCheck == nil %>
-    <h1>Add a Product Reviews</h1>    
+    <h1>Add a Product Reviews <%= current_user.email %></h1>    
     <% if @review_error == "yes" %>
 
       <% if @review.errors.any? %>
@@ -70,13 +74,13 @@
     <% end %>
   <%= form_tag(product_review_path, method: "get") do %>
     <div class="field">
-      <%= label_tag(:name, "Enter your name") %>
+      <%= label_tag(:name, "Enter your name, (this can be anonymous)") %>
       <%= text_field_tag(:name) %>
     </div>
 
     <div class="field">
       <%= label_tag(:review, "Enter your review") %>
-      <%= text_field_tag(:review) %>
+      <%= text_area_tag(:review) %>
     </div>
 
     <%= hidden_field_tag(:id, params[:id]) %>
