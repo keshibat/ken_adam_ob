@@ -32,7 +32,7 @@
       </tr>
     <% end %>
     <tr><td>Number of deals: <%= @quantity %></td></tr>
-    <tr><td>Total saving: $25.00</td></tr>
+    <tr><td>Savings: $<%= number_with_precision((@savings - @sumForStripe), precision: 2) %> | <%= (Float(@savings - @sumForStripe) / @savings * 100).ceil %>%</td></tr>
     <tr><td>Grand Total: $<%= number_with_precision(@sumForStripe, precision: 2) %></td></tr>
     <tr><td><button id="stripePayment">Buy Now</button></td></tr>
   </tbody>
