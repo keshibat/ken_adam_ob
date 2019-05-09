@@ -57,6 +57,14 @@ class ProductListingsController < ApplicationController
   # POST /product_listings
   # POST /product_listings.json
   def create
+    # if not signed in
+    if current_user == nil
+      redirect_to user_session_path
+    else
+      @current_seller = Seller.where(user_id: current_user.id).first
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end
     # get seller id
     @current_seller = Seller.where(user_id: current_user.id).first
     # create to see if product name exists - like a username
@@ -82,6 +90,14 @@ class ProductListingsController < ApplicationController
   # PATCH/PUT /product_listings/1
   # PATCH/PUT /product_listings/1.json
   def update
+    # if not signed in
+    if current_user == nil
+      redirect_to user_session_path
+    else
+      @current_seller = Seller.where(user_id: current_user.id).first
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end
     respond_to do |format|
       if @product_listing.update(product_listing_params)
         format.html { redirect_to @product_listing, notice: 'Product listing was successfully updated.' }

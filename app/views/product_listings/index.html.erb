@@ -2,8 +2,10 @@
 
 <%= link_to 'Edit My Profile', edit_seller_path(@sellerCheck.id) %>
 
-<h1>Product Listings</h1>
-
+<h1>Products for Sale</h1>
+<% if @product_listings.empty? %>
+  <p>You have not made any products for sale.</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -37,7 +39,7 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 <br>
 
 <%= link_to 'New Product Listing', new_product_listing_path %>

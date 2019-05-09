@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="https://js.stripe.com/v3/"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,14 +14,14 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <% unless (controller.controller_name == 'checks' || controller.action_name == 'success') %>
+    <% unless (controller.controller_name == 'checks' || (controller.controller_name == 'sellers' && controller.action_name == 'new') || (controller.controller_name == 'sellers' && controller.action_name == 'create') || controller.action_name == 'success') %>
       <%= render "generic/header" %>
     <% end %>
 
     <% link_to "logout", destroy_user_session_path, method: "DELETE" if user_signed_in? %>
 
-    <h1>KENDO DEALS</h1>
-<%= image_tag("kendo-deals.fw.png", :alt => "Kendo image logo") %>
+    <!-- <h1>KENDO DEALS</h1> -->
+    <%= image_tag("kendo-deals.fw.png", :alt => "Kendo image logo") %>
 
     <%= yield %>
   </body>

@@ -1,7 +1,7 @@
 <%= form_with(model: seller, local: true) do |form| %>
   <% if seller.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(seller.errors.count, "error") %> prohibited this seller from being saved:</h2>
+      <!-- <h2><%= pluralize(seller.errors.count, "error") %> prohibited this seller from being saved:</h2> -->
 
       <ul>
       <% seller.errors.full_messages.each do |message| %>
@@ -48,7 +48,7 @@
 
   <div>
       <%= form.label :picture  %>
-      <%= form.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg"   %>
+      <%= form.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg"  %>
   </div>
 
   <%= form.hidden_field :user_id, :value => current_user.id %>

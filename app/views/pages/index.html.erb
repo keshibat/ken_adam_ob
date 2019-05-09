@@ -15,6 +15,9 @@
   <p><%= "Name: #{@name_display}, Cuisine: #{@cuisine_display}, Location: #{@city_display}" %></p>
 <% end %>
 
+<% if @views.empty? %>
+  <p>No Restaurants for your search selection.</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -48,4 +51,5 @@
   </tbody>
 </table>
 
+<% end %>
 <br>

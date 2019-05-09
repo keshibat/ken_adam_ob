@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>My Product Reviews</h1>
-
+<% if @product_reviews.empty? %>
+  <p>You have made no product reviews.</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -23,6 +25,7 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 
 <br>
 

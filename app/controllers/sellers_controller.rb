@@ -40,7 +40,12 @@ class SellersController < ApplicationController
   # POST /sellers
   # POST /sellers.json
   def create
-    
+    if current_user != nil
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end
     @seller = Seller.new(seller_params)
 
     respond_to do |format|
@@ -50,8 +55,10 @@ class SellersController < ApplicationController
       else
         @cuisine = Cuisine.all
         @city = Location.all
+
         format.html { render :new }
         format.json { render json: @seller.errors, status: :unprocessable_entity }
+        # byebug
       end
     end
   end
@@ -59,6 +66,12 @@ class SellersController < ApplicationController
   # PATCH/PUT /sellers/1
   # PATCH/PUT /sellers/1.json
   def update
+    if current_user != nil
+      # cart quantity check
+      @quantity = Cart.where(user_id: current_user.id).count
+      # seller check needed - no adding to cart for seller
+      @sellerCheck = Seller.where(user_id: current_user.id).first
+    end
     respond_to do |format|
       if @seller.update(seller_params)
         format.html { redirect_to product_listings_path, notice: 'Seller was successfully updated.' }

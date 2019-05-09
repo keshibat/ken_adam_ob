@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>My Cart</h1>
-
+<% if @carts.empty? %>
+  <p>Your cart is empty.</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -31,8 +33,6 @@
         <td><%= link_to 'Remove from Cart', cart, method: :delete %></td>
       </tr>
     <% end %>
-    <tr><td></td></tr>
-    <tr><td></td></tr>
     <% if @quantity > 0 %>
       <tr><td>Number of deals: <%= @quantity %></td></tr>
       <tr><td><%= (Float(@savings.to_i - @sumForStripe.to_i) / @savings.to_i * 100).ceil %>% Kendo Total Savings</td></tr>
@@ -42,6 +42,7 @@
   </tbody>
 </table>
 <br>
+<% end %>
 
 <br>
 <p><%= link_to 'Back To My Profile', product_purchased_listings_path %> | <%= link_to 'Continue Shopping', root_path %></p>

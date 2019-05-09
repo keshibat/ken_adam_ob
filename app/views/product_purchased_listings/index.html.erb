@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Product Purchased Listings</h1>
+<h1>Kendo Deals Purchased History</h1>
 <%= link_to 'My Reviews', product_reviews_path %>
+
+<% if @product_purchased_listings.empty? %>
+  <p>You have not made any purchases.</p>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -36,6 +40,7 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
 <br>
 
 <%= link_to 'Home Page', root_path %>

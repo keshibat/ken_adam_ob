@@ -37,22 +37,39 @@
   </p>
 
 <h1>Product Reviews</h1>
-<% @views.each do |review| %>
-<p>
-  <strong>Name:</strong>
-  <%= review.name %>
-</p>
+<% if @views.empty? %>
+  <p>No reviews for this product.</p>
+<% else %>
+  <% @views.each do |review| %>
+  <p>
+    <strong>Name:</strong>
+    <%= review.name %>
+  </p>
 
-<p>
-  <strong>Review:</strong>
-  <%= review.review %>
-</p>
+  <p>
+    <strong>Review:</strong>
+    <%= review.review %>
+  </p>
+  <% end %>
 <% end %>
-<% if current_user != nil || (current_user != nil && @sellerCheck == nil) %>
-    <h1>Add a Product Reviews</h1>
+<% if current_user != nil && @sellerCheck == nil %>
+    <h1>Add a Product Reviews</h1>    
+    <% if @review_error == "yes" %>
+    <%= @review_error %>
 
-    <%= form_tag product_reviews_path do %>
+      <% if @review.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this product_listing from being saved:</h2>
 
+          <ul>
+          <% @review.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  <%= form_tag(product_review_path, method: "get") do %>
     <div class="field">
       <%= label_tag(:name, "Enter your name") %>
       <%= text_field_tag(:name) %>
@@ -68,7 +85,7 @@
     <div class="actions">
       <%= submit_tag("Submit Review") %>
     </div>
-    <% end %>
+  <% end %>
 <% end %>
 
 <%= link_to "Back to Restaurant's Deals", page_path(:id => @company.id) %>
