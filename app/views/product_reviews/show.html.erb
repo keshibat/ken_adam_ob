@@ -57,7 +57,7 @@
   <% end %>
 <% end %>
 <% if current_user != nil && @sellerCheck == nil %>
-    <h1>Add a Product Reviews <%= current_user.email %></h1>    
+    <h1>Add a Product Review - <%= current_user.email %></h1>    
     <% if @review_error == "yes" %>
 
       <% if @review.errors.any? %>
