@@ -13,16 +13,6 @@ class PaymentsController < ApplicationController
             # insert into ProductPurchasedListing
             ProductPurchasedListing.create(company_name: @purchased.company_name, product_name: @purchased.product_name, description: @purchased.description, was_price: @purchased.was_price, price: @purchased.price, reference_number: @purchased.reference_number, expiry_date: @purchased.expiry_date, qrcode: @purchased.qrcode, user_id: user_id)
             # destroy cart item id in cart model
-            mail = Mail.new do
-                from    'mikel@test.lindsaar.net'
-                to      'dynamicsydney@gmail.com'
-                subject 'This is a test email'
-                body    "test email"
-                # add_file '/full/path/to/somefile.png'
-            end
-              
-            mail.deliver!
-
             @purchased.destroy
         end
     end
