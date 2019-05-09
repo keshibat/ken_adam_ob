@@ -72,14 +72,23 @@ class PaymentsController < ApplicationController
                         product_id: @dealIds.join(",")
                     }
                 },
-                success_url: 'http://localhost:3000/payments/success',
-                cancel_url: 'http://localhost:3000/cancel'
+                success_url: 'https://kendodeal.herokuapp.com/payments/success',
+                cancel_url: 'https://kendodeal.herokuapp.com/payments/cancel'
             )
             @stripe_session_id = stripe_session.id
         end
     end
 
     def success
+        if current_user != nil
+            # cart quantity check
+            @quantity = Cart.where(user_id: current_user.id).count
+            # seller check needed - no adding to cart for seller
+            @sellerCheck = Seller.where(user_id: current_user.id).first
+        end
+    end
+
+    def cancel
         if current_user != nil
             # cart quantity check
             @quantity = Cart.where(user_id: current_user.id).count
