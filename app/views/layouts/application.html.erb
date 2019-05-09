@@ -11,12 +11,18 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <div class="container-fluid no-padding">
+    <% if notice %>
+        <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+        <p class="alert"><%= alert %></p>
+    <% end %>
     <% unless controller.controller_name == 'checks' %>
       <%= render "generic/header" %>
     <% end %>
     <% link_to "logout", destroy_user_session_path, method: "DELETE" if user_signed_in? %>
     <%= yield %>
+    </div>
   </body>
 </html>

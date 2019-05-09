@@ -1,38 +1,44 @@
+
+
 <p id="notice"><%= notice %></p>
+
+
 
 <h1>KENDO DEALS</h1>
 <%= image_tag("kendo-deals.fw.png", :alt => "Kendo image logo") %>
-<table>
-  <thead>
-    <tr>
-      <th>Company Image</th>
-      <th>Company name</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Address</th>
-      <th>Website url</th>
-      <th>Google reviews url</th>
-      <th>Cuisine</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+
+ <div class="container">
     <% @views.each do |view| %>
-      <tr>
-        <td><%= image_tag view.picture if view.picture.attached? %></td>
-        <td><%= view.company_name %></td>
-        <td><%= view.description %></td>
-        <td><%= view.location.city %></td>
-        <td><%= view.address %></td>
-        <td><%= link_to 'Website', view.website_url, target: "_blank" %></td>
-        <td><%= link_to 'Google Reviews', view.google_reviews_url, target: "_blank" %></td>
-        <td><%= view.cuisine.name %></td>
-        <td><%= link_to 'View Restaurant', page_path(:id => view.id) %></td>
-      </tr>
+      <div class="row border">
+        <div class="col-auto"><%= image_tag view.picture if view.picture.attached? %></div>
+        <div class="col">
+            <div>
+                <h4 class="text-uppercase"  ><%= view.company_name %></h4>
+                <div><%= view.description %></div>
+                <div class="font-italic"><%= view.location.city %></div>
+                <div class="font-italic"><%= view.address %></div>
+                <div class="col-auto mr-auto"><%= view.cuisine.name %></div>
+            </div>    
+            <div class="text-right">
+                <div><%= link_to 'Website', view.website_url, target: "_blank" %></div>
+                <div><%= link_to 'Google Reviews', view.google_reviews_url, target: "_blank" %></div>
+                <div class="font-weight-bold"><%= link_to 'View Restaurant', page_path(:id => view.id) %></div>
+            </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+    </div>
 
-<br>
+    
+
+
+
+<%# <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> %>

@@ -1,4 +1,8 @@
 <header>    
+
+<%# <nav class="navbar navbar-light" style="background-color: #e3f2fd;"> %>
+ 
+
     <% if user_signed_in? %>
         <span><%= link_to "Home", root_path %></span>
         <span> | <%= current_user.email %></span>
@@ -15,10 +19,12 @@
         <span> | <%= link_to "logout", destroy_user_session_path, method: "DELETE" %></span>
     <% else %>
         <div class="nav">
-            <div class = "buttons">
-                <button type="button" class="btn btn-primary btn-sm" > <%=  link_to "logIn", new_user_session_path %></button>
-                <button type="button" class="btn btn-primary btn-sm"><%= link_to "Singup", new_user_registration_path %></button>
+            <div class ="buttons">
+                <button type="button" ><%=  link_to "logIn", new_user_session_path%></button> 
+                <button type="button" ><%= link_to "Singup", new_user_registration_path %></button>
             </div>
         </div>
-    <% end %>
+    <% end %> 
+    </nav>
 </header>
+

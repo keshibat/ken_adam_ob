@@ -1,44 +1,51 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @seller.company_name %>
-</p>
+<html>
+<body  class="imgbackgrond-food">
+<div class="form">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @seller.description %>
-</p>
+      <p>
+        <strong>Company name:</strong>
+        <%= @seller.company_name %>
+      </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @seller.location %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @seller.description %>
+      </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @seller.address %>
-</p>
+      <p>
+        <strong>Location:</strong>
+        <%= @seller.location %>
+      </p>
 
-<p>
-  <strong>Website url:</strong>
-  <%= @seller.website_url %>
-</p>
+      <p>
+        <strong>Address:</strong>
+        <%= @seller.address %>
+      </p>
 
-<p>
-  <strong>Google reviews url:</strong>
-  <%= @seller.google_reviews_url %>
-</p>
+      <p>
+        <strong>Website url:</strong>
+        <%= @seller.website_url %>
+      </p>
 
-<p>
-  <strong>Cuisine:</strong>
-  <%= @seller.cuisine %>
-</p>
+      <p>
+        <strong>Google reviews url:</strong>
+        <%= @seller.google_reviews_url %>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @seller.user %>
-</p>
+      <p>
+        <strong>Cuisine:</strong>
+        <%= @seller.cuisine %>
+      </p>
 
-<%= link_to 'Edit', edit_seller_path(@seller) %> |
-<%= link_to 'Back', sellers_path %>
+      <p>
+        <strong>User:</strong>
+        <%= @seller.user %>
+      </p>
+
+      <%= link_to 'Edit', edit_seller_path(@seller) %> |
+      <%= link_to 'Back', sellers_path %>
+  </div>
+</body>
+</html>

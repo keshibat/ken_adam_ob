@@ -4,6 +4,7 @@ class SellersController < ApplicationController
   # GET /sellers
   # GET /sellers.json
   def index
+    @seller = Seller.new
     @sellers = Seller.all
   end
 

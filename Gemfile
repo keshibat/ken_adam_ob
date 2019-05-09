@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+#simple_form
+gem 'simple_form', '~> 4.1'
+
 # bootstrap
 gem 'bootstrap', '~> 4.0.0'
 
