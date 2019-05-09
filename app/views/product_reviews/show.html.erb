@@ -55,7 +55,6 @@
 <% if current_user != nil && @sellerCheck == nil %>
     <h1>Add a Product Reviews</h1>    
     <% if @review_error == "yes" %>
-    <%= @review_error %>
 
       <% if @review.errors.any? %>
         <div id="error_explanation">

@@ -48,7 +48,9 @@ class ProductReviewsController < ApplicationController
         format.html { render :show }
         format.json { render json: @review.errors, status: :unprocessable_entity }
         # if error gives some info
-        @review_error = "yes"
+        if params[:commit]
+          @review_error = "yes"
+        end
       end
     end
   end
