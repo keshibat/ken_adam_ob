@@ -17,39 +17,41 @@ class ProductReviewsController < ApplicationController
   # GET /product_reviews/1
   # GET /product_reviews/1.json
   def show
-    # initial
-    @review_error = "no"
-    @product_listing = ProductListing.find(params[:id])
-    @views = ProductReview.where(product_listing_id: params[:id])
-    @company = Seller.find(@product_listing.seller_id)
-    # if not signed in
-    if current_user != nil
-      # cart quantity check
-      @quantity = Cart.where(user_id: current_user.id).count
-      # seller check needed - no adding to cart for seller
-      @sellerCheck = Seller.where(user_id: current_user.id).first
-    end
-    # add review
-    @review = ProductReview.create(name: params[:name], review: params[:review], product_listing_id: params[:id], user_id: current_user.id)
-    # redirect_to product_review_path(params[:id])
-    respond_to do |format|
-      if @review.save
-        @review_error = "no"
-        format.html { redirect_to product_review_path(:id => params[:id]), notice: 'Product Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        @product_listing = ProductListing.find(params[:id])
-        @views = ProductReview.where(product_listing_id: params[:id])
-        @company = Seller.find(@product_listing.seller_id)
+      # initial
+      @review_error = "no"
+      @product_listing = ProductListing.find(params[:id])
+      @views = ProductReview.where(product_listing_id: params[:id])
+      @company = Seller.find(@product_listing.seller_id)
+      # if not signed in
+      if current_user != nil
         # cart quantity check
         @quantity = Cart.where(user_id: current_user.id).count
         # seller check needed - no adding to cart for seller
         @sellerCheck = Seller.where(user_id: current_user.id).first
-        format.html { render :show }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-        # if error gives some info
-        if params[:commit]
-          @review_error = "yes"
+        # add review
+        @review = ProductReview.create(name: params[:name], review: params[:review], product_listing_id: params[:id], user_id: current_user.id)
+      
+      
+      # redirect_to product_review_path(params[:id])
+      respond_to do |format|
+        if @review.save
+          @review_error = "no"
+          format.html { redirect_to product_review_path(:id => params[:id]), notice: 'Product Review was successfully created.' }
+          format.json { render :show, status: :created, location: @review }
+        else
+          @product_listing = ProductListing.find(params[:id])
+          @views = ProductReview.where(product_listing_id: params[:id])
+          @company = Seller.find(@product_listing.seller_id)
+          # cart quantity check
+          @quantity = Cart.where(user_id: current_user.id).count
+          # seller check needed - no adding to cart for seller
+          @sellerCheck = Seller.where(user_id: current_user.id).first
+          format.html { render :show }
+          format.json { render json: @review.errors, status: :unprocessable_entity }
+          # if error gives some info
+          if params[:commit]
+            @review_error = "yes"
+          end
         end
       end
     end

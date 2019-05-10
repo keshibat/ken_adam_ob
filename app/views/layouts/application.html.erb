@@ -17,7 +17,7 @@
     <% unless (controller.controller_name == 'checks' || (controller.controller_name == 'sellers' && controller.action_name == 'new') || (controller.controller_name == 'sellers' && controller.action_name == 'create') || controller.action_name == 'success') %>
       <%= render "generic/header" %>
     <% end %>
-
+    
     <% link_to "logout", destroy_user_session_path, method: "DELETE" if user_signed_in? %>
 
     <!-- <h1>KENDO DEALS</h1> -->

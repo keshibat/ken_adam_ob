@@ -13,6 +13,7 @@ class CartsController < ApplicationController
         @purchased = ProductListing.find(params[:id])
         # get restaurant info
         @restaurant = Seller.where(id: @purchased.seller_id).first
+        # grab a random number
         ref = 5.times.map{rand(10)}.join
         # qrcode check it
         @qr = RQRCode::QRCode.new("#{@restaurant.website_url}?ref:#{ref}").to_img.resize(200, 200).to_data_url

@@ -7,13 +7,13 @@ class PagesController < ApplicationController
     @city = Location.all
     @cuisine = Cuisine.all
     if params[:search] != nil
-
+      # if name search is blank
       if params[:search].blank?
         @name_display = "Any Location"
       else
         @name_display = params[:search]
       end
-
+      # if city search is blank
       if params[:city] == "%"
         @query_city = "%"
         @city_display = "Any Location"
@@ -21,7 +21,7 @@ class PagesController < ApplicationController
         @query_city = "%#{params[:city]}%"
         @city_display = params[:city]
       end
-
+      # if cuisine search is blank
       if params[:cuisine] == "%"
         @query_cuisine = "%"
         @cuisine_display = "Any Location"
@@ -29,32 +29,8 @@ class PagesController < ApplicationController
         @query_cuisine = "%#{params[:cuisine]}%"
         @cuisine_display = params[:cuisine]
       end
-
-
-      # @query_city = Location.where("city ILIKE ?", "%#{params[:city]}%").first
-      # @query_cuisine = Cuisine.where("name ILIKE ?", "%#{params[:cuisine]}%").first
-      # @views = Seller.where('company_name ILIKE ? AND ', "%#{params[:search]}%", location_id: @query_city.id, cuisine_id: @query_cuisine.id)
-      # @views = Seller.where('company_name ILIKE ? AND location_id = ? AND cuisine_id = ?', "%#{params[:search]}%", @query_city.id, @query_cuisine.id)
-      # @views = Seller.where('company_name ILIKE ? AND location_id ILIKE ? AND cuisine_id ILIKE ?', "%#{params[:search]}%", "%", "%")
-      
-      # @views = Seller.where('company_name ILIKE ?', "%#{params[:search]}%")
-
-      # User.where("id = ? AND nome LIKE ?", id, "%#{nome}%")
-      # "name LIKE ? OR postal_code LIKE ?", "%#{search}%", "%#{search}%"
-      # "name LIKE CONCAT('%',?,'%') OR postal_code LIKE CONCAT('%',?,'%')", search, search)
-      # Seller.where('company_name ILIKE ?', "%#{params[:search]}%")  ####{'company_name ILIKE ?', "%#{params[:search]}%"}, 
-      # @views = Seller.joins(:location, :cuisine).where(cuisines: {'name ILIKE ?' => "%#{params[:search]}%"})
-      # @views = Seller.joins(:location, :cuisine).where(sellers: {'company_name ILIKE ?': "%#{params[:search]}%"}, locations: {"city ILIKE ?": "%#{params[:city]}%"}, cuisines: {"name ILIKE ?": "%#{params[:cuisine]}%"})
-      # @views = Seller.joins(:location, :cuisine).where('company_name ILIKE ? AND location_id ILIKE ? AND cuisine_id ILIKE ?', "%#{params[:search]}%", "%#{params[:city]}%", "%#{params[:cuisine]}%")
-      
+      # query database
       @views = Seller.joins(:location, :cuisine).where("company_name ILIKE ?", "%#{params[:search]}%").where("locations.city ILIKE ?", @query_city).where("cuisines.name ILIKE ?", @query_cuisine)
-      # @views = Seller.joins(:location, :cuisine).where("company_name ILIKE ?", "%#{params[:search]}%").(Location.where(locations: {"city ILIKE ?": @query_city})).(Cuisine.where(cuisines: {"name ILIKE ?": @query_cuisine}))
-      # @views = Seller.includes(:location, :cuisine).where("company_name ILIKE ?", "%#{params[:search]}%").or(Location.where("city ILIKE ?", @query_city)).or(Cuisine.where("name ILIKE ?", @query_cuisine))
-
-
-            # Seller.joins(:location, :cuisine).where("company_name ILIKE ?", "El Jannah").orwhere(locations: {city: "Sydney CBD"}, cuisines: {name: "Turkish"})
-      # @views = Seller.joins(:location, :cuisine).where(location: {"city ILIKE ?": "%#{params[:city]}%"})
-      # User.joins(:user_info, :forms).where(user_infos: {state: "open"}, forms: {state: "AZ"})
     else
       @views = Seller.all
     end
