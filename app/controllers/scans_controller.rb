@@ -6,14 +6,19 @@ class ScansController < ApplicationController
             # seller check needed - no adding to cart for seller
             @sellerCheck = Seller.where(user_id: current_user.id).first
         end
-        # check if deal exists or has already been used
-        @outcome = ProductPurchasedListing.where(reference_number: params[:ref]).first
-        if @outcome == nil || @outcome.reference_number == "used"
-            @outcome_check = "used"
+        if @sellerCheck != nil
+            @product_purchased_listings = ProductPurchasedListing.all
+            # check if deal exists or has already been used
+            @outcome = ProductPurchasedListing.where(reference_number: params[:ref]).first
+            if @outcome == nil || @outcome.reference_number == "used"
+                @outcome_check = "used"
+            else
+                @outcome_check = "accept"
+                @outcome_update = ProductPurchasedListing.update(@outcome.id, :reference_number => "used")
+                @outcome_update.save
+            end
         else
-            @outcome_check = "accept"
-            @outcome_update = ProductPurchasedListing.update(@outcome.id, :reference_number => "used")
-            @outcome_update.save
+            redirect_to root_path
         end
     end
 end
