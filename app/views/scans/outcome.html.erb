@@ -1,48 +1,9 @@
-<h1>Outcome of this Deal</h1>
-
-<%= @outcome_check %>
-<%= params[:ref] %>
-<%= @outcome_check %>
-
-<table>
-        <thead>
-          <tr>
-            <th>QR CODE</th>
-            <th>Product name</th>
-            <th>Restaurant</th>
-            <th>Description</th>
-            <th>Was price</th>
-            <th>Kendo Discount</th>
-            <th>Price</th>
-            <th>Reference number</th>
-            <th>Expiry date</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-      
-        <tbody>
-          <% @product_purchased_listings.each do |product_purchased_listing| %>
-            <tr>
-              <td><%= image_tag product_purchased_listing.qrcode %></td>
-              <td><%= product_purchased_listing.company_name %></td>
-              <td><%= product_purchased_listing.product_name %></td>
-              <td><%= product_purchased_listing.description %></td>
-              <td>$<%= number_with_precision(product_purchased_listing.was_price, precision: 2) %></td>
-              <td><%= (Float(product_purchased_listing.was_price.to_i - product_purchased_listing.price.to_i) / product_purchased_listing.was_price.to_i * 100).ceil %>% Kendo Savings</td>
-              <td>$<%= number_with_precision(product_purchased_listing.price, precision: 2) %></td>
-              <td><%= product_purchased_listing.reference_number %></td>
-              <td><%= product_purchased_listing.expiry_date %></td>
-              <td><%= link_to 'Show', product_purchased_listing %></td>
-              <td><%= link_to 'Destroy', product_purchased_listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
+<h1>Deal Transaction Outcome</h1>
 
 <% if @outcome_check == "accept" %>
     <div class="outcome1">
-        <h1>This deal has been accepted, you can now give your customer your deal</h1>
+        <h2>This deal has been accepted.</h2>
+        <h3>You can now give your customer your deal.</h3>
     </div>
 <% else %>
     <div class="outcome2">
@@ -51,7 +12,5 @@
     </div>
 <% end %>
 <br />
-<%= @outcome_check %>
-<%= params[:ref] %>
 <br />
 <%= link_to 'Go to my profile', product_listings_path %>
