@@ -74,6 +74,13 @@ QR is short (they can be read quickly by a cell phone). We are using this techno
 
 ![Imgur](https://i.imgur.com/6ntMQM9.png)
 
+4. Deal Transaction Outcome Completed with css and customer realtime updating product purchase history
+
+![Imgur](https://i.imgur.com/uzeWTDc.png)
+![Imgur](https://i.imgur.com/gSHrroA.png)
+![Imgur](https://i.imgur.com/z9sAWQ6.png)
+
+
 ### Tech stack
 [![Tech Stack](https://i.imgur.com/DziCzWH.png)](https://stackshare.io/keshibat/my-stack)
 [![](https://i.imgur.com/PqNxYcg.png)](https://stackshare.io/keshibat/my-stack)
