@@ -20,7 +20,7 @@
 1. Link to [published app on Heroku](https://kendodeal.herokuapp.com/)
 2. Link to [Github Repo](https://github.com/keshibat/ken_adam_ob)
 
-[![kendo coupns](https://i.imgur.com/jpswWqx.png)](https://www.groupon.com.au/)
+[![kendo coupns](https://i.imgur.com/jpswWqx.png)](https://kendodeal.herokuapp.com/)
 
 
 ### Functionality
@@ -71,6 +71,8 @@ QR is short (they can be read quickly by a cell phone). We are using this techno
 ![QR_CODE](https://i.imgur.com/r7CYZ7s.png)
 
 3. Shopping Cart
+
+![Imgur](https://i.imgur.com/6ntMQM9.png)
 
 ### Tech stack
 [![Tech Stack](https://i.imgur.com/DziCzWH.png)](https://stackshare.io/keshibat/my-stack)
@@ -233,15 +235,7 @@ Third is Security and authentication: SQLite does not provide an authentication 
 
 #### 7.Identify and describe the production database setup (i.e. postgres instance).
 
-Postgres is a client/server application and as a user, we only need access to the client portions of the installation. Once installed, Postgresql allows you to create, access and destroy databases.
-
-Each Postgresql session consists of these 3 elements;
-
-A supervisory Postmaster
-the user's psql program (front-end), and
-1 or more backend database servers which is the postgres process itself
-The fundamental aspect of Postgresql are tables, which in turn are a collection of rows. Each row has the same set of named columns, and each column is of a specific type. Each row also has an unique permanent object identifier.
-
+Postgres is the PostgreSQL database server. In order for a client application to access a database it connects (over a network or locally) to a running postgres instance. The postgres instance then starts a separate server process to handle the connection.
 
 
 #### 8.Describe the architecture of your App.
@@ -300,8 +294,6 @@ Kendo Deals uses two types of database relations.
 
 1. **One-to-one–** Both tables can have only one record on each side of the relationshipexample:one user has one seller
 2. **One-to-many-** The primary key table contains only one record that relates to oneor many records in the related table.Example: one seller has many product listings
-
-
 
 
 #### 13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
@@ -399,8 +391,8 @@ Then, merge remote current_working_feature to remote feature branch.
 If feature branch is working fine, merge to develop branch.
 We merged develop branch to master branch for deploying to HEROKU.
 
-![gitflow](https://i.imgur.com/S84JHws.png)
 
+[![Testing Process](https://i.imgur.com/S84JHws.png)](https://docs.google.com/spreadsheets/d/1_hoesX9xQmlJy0OX8hcMBSrKBiAPDnwgbwAkEnu3DOY/edit?usp=sharing)
 
 #### 20.Provide an overview and description of your Testing process.
 
