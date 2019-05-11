@@ -7,6 +7,7 @@ class ScansController < ApplicationController
             @sellerCheck = Seller.where(user_id: current_user.id).first
         end
         if @sellerCheck != nil
+            @product_purchased_listings = ProductPurchasedListing.all
             # check if deal exists or has already been used
             @outcome = ProductPurchasedListing.where(reference_number: params[:ref]).first
             if @outcome == nil || @outcome.reference_number == "used"
