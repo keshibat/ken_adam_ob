@@ -1,0 +1,14 @@
+<h1>Outcome of this Deal</h1>
+<% if @outcome_check == "accept" %>
+    <div class="outcome1">
+        <h1>This deal has been accepted, you can now give your customer your deal</h1>
+    </div>
+<% else %>
+    <div class="outcome2">
+        <h2>This deal has been not been accepted.</h2>
+        <h3>The deal has been previously used or does not exist.</h3>
+    </div>
+<% end %>
+<br />
+<br />
+<%= link_to 'Go to my profile', product_listings_path %>

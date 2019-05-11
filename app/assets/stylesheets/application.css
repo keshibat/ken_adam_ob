@@ -18,4 +18,20 @@ img{
     height: 150px;
     padding: 30px 15px 20px;
 }
+.outcome1{
+    width: 85%;
+    margin: 0 auto;
+    padding: 100px;
+    text-align: center;
+    background-color: green;
+    color: #fff;
+}
+.outcome2{
+    width: 85%;
+    margin: 0 auto;
+    padding: 100px;
+    text-align: center;
+    background-color: red;
+    color: #fff;
+}
 
