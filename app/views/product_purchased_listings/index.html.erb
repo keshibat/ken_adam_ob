@@ -24,7 +24,11 @@
 
   <tbody>
     <% @product_purchased_listings.each do |product_purchased_listing| %>
+    <% if product_purchased_listing.reference_number == "used" %>
+      <tr class="red">
+    <% else %>
       <tr>
+    <% end %>
         <td><%= image_tag product_purchased_listing.qrcode %></td>
         <td><%= product_purchased_listing.company_name %></td>
         <td><%= product_purchased_listing.product_name %></td>
