@@ -1,4 +1,9 @@
 <h1>Outcome of this Deal</h1>
+
+<%= @outcome_check %>
+<%= params[:ref] %>
+<%= @outcome.reference_number %>
+<%= @outcome_check %>
 <% if @outcome_check == "accept" %>
     <div class="outcome1">
         <h1>This deal has been accepted, you can now give your customer your deal</h1>
@@ -10,5 +15,8 @@
     </div>
 <% end %>
 <br />
+<%= @outcome_check %>
+<%= params[:ref] %>
+<%= @outcome.reference_number %>
 <br />
 <%= link_to 'Go to my profile', product_listings_path %>
