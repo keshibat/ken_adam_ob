@@ -158,7 +158,7 @@ As  Sophia(New in town). I want to know what restaurant is around me and good. S
 ### Project plan & timeline
 
 ### Trello
-[![Trello](https://i.imgur.com/Bv4vntV.png)](https://trello.com/b/Z0cIwjOX/railsrestaurantcoupons)
+[![Trello](https://i.imgur.com/iPtOK7o.png)](https://trello.com/b/Z0cIwjOX/railsrestaurantcoupons)
 
 
 ### Short Answer Questions
