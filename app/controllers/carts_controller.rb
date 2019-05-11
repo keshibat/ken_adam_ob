@@ -19,7 +19,7 @@ class CartsController < ApplicationController
         # testing qr code
         # @qr = RQRCode::QRCode.new("#{@restaurant.website_url}?ref:#{ref}").to_img.resize(200, 200).to_data_url
         # real qr code with reference number
-        @qr = RQRCode::QRCode.new("https://kendodeal.herokuapp.com/scans/outcome?ref:#{ref}").to_img.resize(200, 200).to_data_url
+        @qr = RQRCode::QRCode.new("https://kendodeal.herokuapp.com/scans/outcome?ref=#{ref}").to_img.resize(200, 200).to_data_url
         # check if product exits in model where currentuser
         # Seller cannot add the same product name twice anyways
         @checkIfExists = Cart.where(product_name: @purchased.product_name, user_id: current_user.id ).first
