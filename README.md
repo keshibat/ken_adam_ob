@@ -1,18 +1,18 @@
 # Kendo Coupons
 ## Table of content
 * [About](#about)
-* [Functionality](#Functionality)
-* [Feature](#Feature)
-* [Tech stack](#Tech\ddstack)
-* [Instruction](#Instruction)
-* [Design process](#Tesign\dproces)
-* [User Story](#User\dStory)
-* [A workflow diagram of the user journey](#A\dworkflow\ddiagram\dof\dthe\duser\djourney)
+* [Functionality](#functionality)
+* [Feature](#feature)
+* [Tech stack](#tech-stack)
+* [Instruction](#instruction)
+* [Design process](#design-process)
+* [User Story](#user-story)
+* [A workflow diagram of the user journey](#a-workflow-diagram-of-the-user-journey)
 * [WireFrames](##WireFrames)
-* [Database Entity Relationship Diagrams](#Database\dEntity\dRelationship\dDiagrams)
-* [Project plan & timeline](#Project\dplan\d&\dtimeline)
-* [Trello](#Trello)
-* [Short Answer Questions](#Short\dAnswer\dQuestions)
+* [Database Entity Relationship Diagrams](#database-entity-relationship-diagrams)
+* [Project plan and timeline](#project-plan-and-timeline)
+* [Trello](#trello)
+* [Short Answer Questions](#short-answer-questions)
 
 
 
@@ -37,7 +37,7 @@
 
 4. Sellers cannot buy products or add product review.
 
-![Imgur](https://i.imgur.com/QjGacDo.png)
+![Imgur](https://i.imgur.com/AiziQnl.png)
 
 5. Sellers have their own CMS profile.
 
@@ -52,11 +52,11 @@
 
 8. Buyer can add a product review.
 
-![Imgur](https://i.imgur.com/rXskgDw.png)
+![Imgur](https://i.imgur.com/Uzmd0Kk.png)
 
 9. Buyer have their own profile.
 
-![Imgur](https://i.imgur.com/rXskgDw.png)
+![Imgur](https://i.imgur.com/uLsyhOC.png)
 
 ### Feature
 
@@ -72,7 +72,8 @@ QR is short (they can be read quickly by a cell phone). We are using this techno
 
 3. Shopping Cart
 
-![Imgur](https://i.imgur.com/6ntMQM9.png)
+![Imgur](https://i.imgur.com/4WOD181.png)
+![Imgur](https://i.imgur.com/RL8Oi34.png)
 
 4. Deal Transaction Outcome Completed with css and customer realtime updating product purchase history
 
@@ -155,10 +156,10 @@ As  Sophia(New in town). I want to know what restaurant is around me and good. S
 
 ![Relationship_Diagrams](https://i.imgur.com/tSKrhV8.png)
 
-### Project plan & timeline
+### Project plan and timeline
 
 ### Trello
-[![Trello](https://i.imgur.com/iPtOK7o.png)](https://trello.com/b/Z0cIwjOX/railsrestaurantcoupons)
+[![Trello](https://i.imgur.com/46BnJ8a.png)](https://trello.com/b/Z0cIwjOX/railsrestaurantcoupons)
 
 
 ### Short Answer Questions
@@ -399,7 +400,7 @@ If feature branch is working fine, merge to develop branch.
 We merged develop branch to master branch for deploying to HEROKU.
 
 
-[![Testing Process](https://i.imgur.com/S84JHws.png)](https://docs.google.com/spreadsheets/d/1_hoesX9xQmlJy0OX8hcMBSrKBiAPDnwgbwAkEnu3DOY/edit?usp=sharing)
+[![Testing Process](https://i.imgur.com/S84JHws.png)](https://docs.google.com/spreadsheets/d/1_hoesX9xQmlJy0OX8hcMBSrKBiAPDnwgbwAkEnu3DOY/edit#gid=1786713470)
 
 #### 20.Provide an overview and description of your Testing process.
 
