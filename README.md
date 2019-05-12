@@ -77,8 +77,8 @@ QR is short (they can be read quickly by a cell phone). We are using this techno
 
 4. The transaction between buyer(Customer) and the seller(Restaurant) after scanning the QR code purchase - with updating in the customers profile
 
-![Imgur](https://i.imgur.com/uzeWTDc.png)
-![Imgur](https://i.imgur.com/gSHrroA.png)
+![Imgur](https://i.imgur.com/4ym2eG3.png)
+![Imgur](https://i.imgur.com/wcTFUO6.png)
 ![Imgur](https://i.imgur.com/z9sAWQ6.png)
 
 
@@ -161,8 +161,7 @@ As  Sophia(New in town). I want to know what restaurant is around me and good. S
 ![Imgur](https://i.imgur.com/dtQBljS.png)
 
 ### Trello
-[![Trello](https://i.imgur.com/46BnJ8a.png)](https://trello.com/b/Z0cIwjOX/railsrestaurantcoupons)
-
+[![Trello](https://i.imgur.com/9FSqA3o.png)](https://trello.com/b/Z0cIwjOX/railsrestaurantcoupons)
 
 ### Short Answer Questions
 
