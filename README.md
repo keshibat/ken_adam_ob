@@ -8,7 +8,7 @@
 * [Design process](#design-process)
 * [User Story](#user-story)
 * [A workflow diagram of the user journey](#a-workflow-diagram-of-the-user-journey)
-* [WireFrames](##WireFrames)
+* [WireFrames](#wireframes)
 * [Database Entity Relationship Diagrams](#database-entity-relationship-diagrams)
 * [Project plan and timeline](#project-plan-and-timeline)
 * [Trello](#trello)
