@@ -75,7 +75,7 @@ QR is short (they can be read quickly by a cell phone). We are using this techno
 ![Imgur](https://i.imgur.com/4WOD181.png)
 ![Imgur](https://i.imgur.com/RL8Oi34.png)
 
-4. Deal Transaction Outcome Completed with css and customer realtime updating product purchase history
+4. The transaction between buyer(Customer) and the seller(Restaurant) after scanning the QR code purchase - with updating in the customers profile
 
 ![Imgur](https://i.imgur.com/uzeWTDc.png)
 ![Imgur](https://i.imgur.com/gSHrroA.png)
